@@ -27,7 +27,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 
-console.log(process.env.MONGODB_DATABASE);
+// console.log(process.env.MONGODB_DATABASE);
 // const MONGODB_URI ='mongodb+srv://Nishank:2e6qinegEshobrmn@cluster0.sio3l.mongodb.net/shop?retryWrites=true&w=majority';
 const MONGODB_URI =`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.sio3l.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`;
 
@@ -51,7 +51,7 @@ const fileStorage = multer.diskStorage({
         // new Date().toISOString()
     }
 });
-console.log("hogaya kya$$");
+// console.log("hogaya kya$$");
 // console.log(process.env.NODE_ENV);
 
 const filefilter = (req,file,cb) => {
