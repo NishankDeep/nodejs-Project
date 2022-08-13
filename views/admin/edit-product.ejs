@@ -1,0 +1,51 @@
+<%- include('../includes/start.ejs') %>
+
+    <link rel="stylesheet" href="/main/form.css">
+    <link rel="stylesheet" href="/main/admin.css">
+    <link rel="stylesheet" href="/main/shop.css">
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+    <main class="main-form">
+        <% if(errorMsg){ %> 
+            <div class="user-msg user-msg-error"> <%= errorMsg %> </div>
+        <% } %>
+        <form class="main-form-section product-form" action=" <% if(editing){ %>/edit-product <% } else { %>/product<% } %>" method="POST" enctype="multipart/form-data">
+            
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-control">
+                <label for="title" class="main-form-text">Title</label>
+                <input type="text" name="title" class="main-form-input" id="title" value="<% if(editing || hasError) { %> <%= prods.title %> <% } %>">
+            </div>
+            <div class="form-control">
+                <!-- <label for="imageURL" class="main-form-text">Image URL</label>
+                <input type="text" name="imageURL" class="main-form-input" id="imageUrl" value="<% if(editing || hasError) { %> <%= prods.imageUrl %> <% } %>"> -->
+                <label for="image" class="main-form-text">Image</label>
+                <input type="file" name="image" class="main-form-input" id="image">
+            </div>
+            <div class="form-control">
+                <label for="price" class="main-form-text">Price</label>
+                <input type="number" name="price" class="main-form-input" step="0.01" id="price" value="<% if(editing || hasError) { %><%= +prods.price %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="description" class="main-form-text">Description</label>
+                <textarea name="description" id="description" rows="5" class="description" id="description"><% if(editing || hasError) { %> <%= prods.description %> <% } %></textarea>
+            </div>
+
+            <button type="submit" class="main-form-button">
+                <% if(editing){ %>
+                    Update Product
+                <% } else { %>    
+                    Add Product
+                <% } %>
+            </button>
+            <% if(editing){ %>
+                <input type="hidden" name="productId" value="<%= prods. _id %>">
+            <% }%>  
+
+        </form>
+    </main>
+
+<%- include('../includes/end.ejs') %>

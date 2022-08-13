@@ -1,0 +1,27 @@
+<%- include('../includes/start.ejs') %>
+
+    <link rel="stylesheet" href="/main/admin.css">
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+    <main class="centered">
+        <h1><%= prods.title %></h1>
+        <hr>
+        <div>
+            <img src="/<%= prods.imageUrl %>" alt="<%= prods.title %>" srcset="" >
+        </div>
+        <div>
+            <h3>$<%= prods.price %></h3>
+        </div>
+        <div>
+            <p><%= prods.description %></p>
+        </div>
+
+        <% if(isAuthenticated){ %>
+        <%- include('../includes/add-to-cart.ejs') %>
+        <% } %>
+    </main>
+
+    <%- include('../includes/end.ejs') %>

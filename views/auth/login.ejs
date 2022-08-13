@@ -1,0 +1,36 @@
+<%- include('../includes/start.ejs') %>
+
+    <link rel="stylesheet" href="/main/form.css">
+    <link rel="stylesheet" href="/main/admin.css">
+    <link rel="stylesheet" href="/main/login.css">
+
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+    <main class="main-form">
+        <% if(errorMsg){ %> 
+            <div class="user-msg user-msg-error"> <%= errorMsg %> </div>
+        <% } %>
+        <form class=" login-form" action="/login" method="POST" novalidate>
+            
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-control">
+                <label for="email" class="main-form-text">E-mail</label>
+                <input class="<%= validationError.find(e=> e.param === 'email') ? 'invalid' : '' %>" type="email" name="email" class="main-form-input" id="email" value="<%= oldInput.email %>">
+            </div>
+            <div class="form-control">
+                <label for="password" class="main-form-text">Password</label>
+                <input class="<%= validationError.find(e=> e.param === 'password') ? 'invalid' : '' %>" type="password" name="password" class="main-form-input" id="password" value="<%= oldInput.password %>">
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+        <div class="centered">
+            <a href="/reset" rel="noopener noreferrer">Reset Password</a>
+        </div>
+    </main>
+
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,50 @@
+<%- include('../includes/start.ejs') %>
+
+    <link rel="stylesheet" href="/main/admin.css">
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+    <main>
+        <!-- <h1>My Products</h1>
+        <p>List of all the products...</p>  -->
+        <% if(prods.length>0){ %>
+            <div class="grid">
+                <% for(let product of prods){ %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"> <%= product.title %> </h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="/<%= product.imageUrl %>" alt="A Book" class=" changeSize">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">$<%= product.price %></h2>
+                            <p class="product__description"><%= product.description %></p>
+                        </div>
+                        <div class="card__actions">
+                            <a href="/admin/edit-product/<%= product. _id %>?edit=true" class="btn">Edit</a>
+
+                            <!-- we want to redirect our code and not to get any new page -->
+                            <!--we want to change something and not really to load something  -->
+                            <!-- <form action="/admin/deleteProduct" method="POST">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <input type="hidden" name="productId" value="<%= product._id %>">
+                                <button class="btn" type="submit">Delete</button>
+                            </form> -->
+                            
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="hidden" name="productId" value="<%= product._id %>">
+                            <button class="btn" type="button" onclick="deleteProduct(this)">Delete</button>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No items are added</h1>
+        <% } %>
+    </main>
+
+ <script src="/js/admin.js"></script>
+<%- include('../includes/end.ejs') %>

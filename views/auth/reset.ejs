@@ -1,0 +1,28 @@
+<%- include('../includes/start.ejs') %>
+
+    <link rel="stylesheet" href="/main/form.css">
+    <link rel="stylesheet" href="/main/admin.css">
+    <link rel="stylesheet" href="/main/login.css">
+
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+    <main class="main-form">
+        <% if(errorMsg){ %> 
+            <div class="user-msg user-msg-error"> <%= errorMsg %> </div>
+        <% } %>
+        <form class=" login-form" action="/reset" method="POST">
+            
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-control">
+                <label for="email" class="main-form-text">E-mail</label>
+                <input type="email" name="email" class="main-form-input" id="email">
+            </div>
+
+            <button type="submit" class="btn">Reset</button>
+        </form>
+    </main>
+
+<%- include('../includes/end.ejs') %></body>

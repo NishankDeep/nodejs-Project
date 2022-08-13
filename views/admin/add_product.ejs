@@ -1,0 +1,35 @@
+<%- include('../includes/start.ejs') %>
+
+    <link rel="stylesheet" href="/main/form.css">
+    <link rel="stylesheet" href="/main/admin.css">
+    <link rel="stylesheet" href="/main/shop.css">
+</head>
+
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+    <main class="main-form">
+        <form class="main-form-section product-form" action="/product" method="POST">
+            <div class="form-control">
+                <label for="title" class="main-form-text">Title</label>
+                <input type="text" name="title" class="main-form-input" id="title">
+            </div>
+            <div class="form-control">
+                <label for="imageURL" class="main-form-text">Image URL</label>
+                <input type="text" name="imageURL" class="main-form-input" id="imgageUrl">
+            </div>
+            <div class="form-control">
+                <label for="price" class="main-form-text">Price</label>
+                <input type="number" name="price" class="main-form-input" step="0.01" id="price">
+            </div>
+            <div class="form-control">
+                <label for="description" class="main-form-text">Description</label>
+                <textarea name="description" id="description" rows="5" class="description" id="description"></textarea>
+            </div>
+
+            <button type="submit" class="main-form-button">Add Product</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        </form>
+    </main>
+
+<%- include('../includes/end.ejs') %>
