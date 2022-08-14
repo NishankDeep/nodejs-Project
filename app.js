@@ -147,6 +147,7 @@ app.use((error,req,res,next) => {
 
 mongoose.connect(MONGODB_URI)
     .then(result => {
+        console.log(process.env.PORT);
         app.listen((process.env.PORT )|| (3000));
     })
     .catch(err => {
