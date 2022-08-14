@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "the shop project",
   "main": "app.js",
-  "engines":{
-    "node" : "18.3.0"
+  "engines": {
+    "node": "18.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
